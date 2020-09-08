@@ -1,3 +1,5 @@
+// Video grafikart 
+
 // requête GET avec fetch
 
 const getUsers = async function () {
@@ -24,8 +26,8 @@ const insertPost = async function (data) {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     });
-    if (responseData.ok) {
-        let data = await response.json();
+    if (response.ok) {
+        let responseData = await response.json();
         console.log(responseData);
     }
 }
