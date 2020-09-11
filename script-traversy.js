@@ -11,7 +11,9 @@ function getText() {
     fetch('sample.txt')
     .then((response) => response.text())
     .then((data) => {
-        document.getElementById('output').innerText = data;
+        let divOutput = document.getElementById('output')
+        divOutput.style.display = 'block';
+        divOutput.innerHTML = data;
     })
     .catch((err) => console.log(err));
 }
@@ -30,7 +32,10 @@ function getJson() {
                     <li class="list-group-item">Is ${user.name} alive ? It's ${user.isAlive}</li>
                 </ul>`
         });
-        document.getElementById('output').innerHTML = output;
+        let divOutput = document.getElementById('output')
+        divOutput.style.display = 'block';
+        divOutput.innerHTML = output;
+
     })
 }
 
@@ -71,5 +76,12 @@ function addPost(e) {
         body: JSON.stringify({title:title, body:body})
     })
     .then( res => res.json())
-    .then( data => console.log(data))
+    .then( data => {
+        let divData = document.getElementById('divData');
+        divData.innerHTML = `
+        <div class="card card-body mt-3">
+            <h3>${data.title}</h3>
+            <p>${data.body}</p>
+        </div>`;
+       })
 }
